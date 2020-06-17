@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/stay_logged_in', to: 'users#stay_logged_in'
   post '/users/login', to: 'users#login'
+  patch '/users/:id', to: 'users#update'
+  delete '/users/:id', to: 'users#destroy'
 
 
 

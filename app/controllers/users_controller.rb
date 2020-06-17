@@ -29,7 +29,7 @@ end
             token: wristband
         }
     else 
-        render json: {message: "Incorrect email of password"}
+        render json: {message: "Incorrect email or password"}
     
     end 
 end 
@@ -42,6 +42,20 @@ end
       token: wristband
   }
  end
+
+ def update
+    @user = User.find(params[:id])
+    @user.update(first_name: params[:first_name] , last_name: params[:last_name] , title: params[:title] , linkedin: params[:linkedin] , image: params[:image] , portfolio: params[:portfolio] ,github: params[:github] , resume: params[:resume] , skills: params[:skills]  )
+    @user.save
+    render json: @user
+end
+
+
+ def destroy 
+    @user = User.find(params[:id])
+    @user.destroy!
+    render json: @user
+ end 
 
     private 
     def user_params
