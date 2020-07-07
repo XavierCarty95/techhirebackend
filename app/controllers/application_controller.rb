@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
-    password = "soccer1995"
+    
     def encode_token(payload)
-        JWT.encode(payload, password)
+        JWT.encode(payload, "soccer1995")
     end
 
     def auth_header
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
             token = auth_header
         
             begin 
-                JWT.decode(token, password , true , algorithm: 'HS256')
+                JWT.decode(token, "soccer1995" , true , algorithm: 'HS256')
                 
             rescue JWT::DecodeEror
                 nil 
